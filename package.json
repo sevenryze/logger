@@ -1,0 +1,79 @@
+{
+  "name": "@sevenryze/logger",
+  "version": "0.0.0",
+  "private": false,
+  "main": "index.js",
+  "files": [
+    "dist/",
+    "typings/",
+    "index.js",
+    "index.d.ts"
+  ],
+  "scripts": {
+    "build": "rm -rf dist && tsc -p .",
+    "watch": "tsc -w --incremental -p .",
+    "test": "jest --bail --runInBand",
+    "test:coverage": "jest -w=7 --ci --bail --coverage",
+    "test:only-unit": "jest --bail --testNamePattern=\"Unit:\"",
+    "test:only-integration": "jest --bail --testNamePattern=\"Integration:\"",
+    "test:only-e2e": "jest --bail --testNamePattern=\"E2E:\"",
+    "format": "prettier --write \"**/*.ts\"",
+    "lint": "eslint --fix \"{lib,test}/**/*.ts\" --quiet",
+    "prerelease": "npm run build && npm test",
+    "release": "release-it"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -c .commitlintrc.json -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint --fix --quiet",
+      "prettier --write"
+    ]
+  },
+  "towerflow": {
+    "type": "node-lib"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-angular": "^8.3.4",
+    "@nestjs/common": "^6.11.10",
+    "@nestjs/core": "^6.11.10",
+    "@nestjs/platform-express": "^6.11.10",
+    "@release-it/conventional-changelog": "^1.1.0",
+    "@types/jest": "^25.1.3",
+    "@typescript-eslint/eslint-plugin": "^2.22.0",
+    "@typescript-eslint/parser": "^2.22.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "express": "^4.17.1",
+    "husky": "^4.2.3",
+    "jest": "^25.1.0",
+    "lint-staged": "^10.0.8",
+    "prettier": "^1.19.1",
+    "reflect-metadata": "^0.1.13",
+    "release-it": "^12.6.2",
+    "ts-jest": "^25.2.1",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.8.3"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^6.0.0",
+    "@nestjs/core": "^6.0.0",
+    "reflect-metadata": "^0.1.13"
+  },
+  "dependencies": {
+    "@sevenryze/ruid": "^1.3.3",
+    "@types/fs-extra": "^8.1.0",
+    "@types/node": "^13.7.7",
+    "aws-sdk": "^2.631.0",
+    "fs-extra": "^8.1.0",
+    "winston": "^3.2.1",
+    "winston-cloudwatch": "^2.3.0",
+    "winston-daily-rotate-file": "^4.4.2"
+  }
+}
