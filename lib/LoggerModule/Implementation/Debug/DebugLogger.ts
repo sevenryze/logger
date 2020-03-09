@@ -10,19 +10,19 @@ export interface DebugLoggerOptions {
 
 export class DebugLogger implements Logger {
   public error(message: LoggerMessage, metadata?: LoggerMetadata): void {
-    this.winstonLogger.error(this.getFormatMessage(message), metadata);
+    this.winstonLogger.error(DebugLogger.getFormatMessage(message), this.getFormatMetadata(metadata));
   }
 
   public warn(message: LoggerMessage, metadata?: LoggerMetadata): void {
-    this.winstonLogger.warn(this.getFormatMessage(message), metadata);
+    this.winstonLogger.warn(DebugLogger.getFormatMessage(message), this.getFormatMetadata(metadata));
   }
 
   public info(message: LoggerMessage, metadata?: LoggerMetadata): void {
-    this.winstonLogger.info(this.getFormatMessage(message), metadata);
+    this.winstonLogger.info(DebugLogger.getFormatMessage(message), this.getFormatMetadata(metadata));
   }
 
   public debug(message: LoggerMessage, metadata?: LoggerMetadata): void {
-    this.winstonLogger.debug(this.getFormatMessage(message), metadata);
+    this.winstonLogger.debug(DebugLogger.getFormatMessage(message), this.getFormatMetadata(metadata));
   }
 
   constructor(options: DebugLoggerOptions) {
@@ -43,7 +43,14 @@ export class DebugLogger implements Logger {
 
   private winstonLogger: WinstonLogger;
 
-  private getFormatMessage(message: string): string {
-    return `[${this.fileRelativePath}][${message}]`;
+  private static getFormatMessage(message: any): string {
+    return message;
+  }
+
+  private getFormatMetadata(metadata: LoggerMetadata = {}): object {
+    return {
+      ...metadata,
+      loggingFilePath: this.fileRelativePath,
+    };
   }
 }

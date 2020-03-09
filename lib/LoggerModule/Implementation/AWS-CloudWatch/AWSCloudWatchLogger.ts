@@ -117,10 +117,13 @@ export class AWSCloudWatchLogger implements Logger {
   private winstonLogger: WinstonLogger;
 
   private formatMessage(message: LoggerMessage): LoggerMessage {
-    return typeof message === "string" ? `[${this.fileRelativePath}][${message}]` : message;
+    return message;
   }
 
-  private formatMetadata(metadata?: LoggerMetadata): string {
-    return "metadata";
+  private formatMetadata(metadata: LoggerMetadata = {}): object {
+    return {
+      ...metadata,
+      loggingFilePath: this.fileRelativePath,
+    };
   }
 }
