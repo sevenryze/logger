@@ -1,3 +1,11 @@
+<a name="0.1.3"></a>
+## [0.1.3](https://github.com/sevenryze/logger/compare/0.1.2...0.1.3) (2020-03-11)
+
+
+### Bug Fixes
+
+* Fix the object display in debug logger ([c6f6ffc](https://github.com/sevenryze/logger/commit/c6f6ffc))
+
 <a name="0.1.2"></a>
 ## [0.1.2](https://github.com/sevenryze/logger/compare/0.1.1...0.1.2) (2020-03-09)
 
