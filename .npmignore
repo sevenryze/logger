@@ -1,0 +1,21 @@
+# source
+lib
+tests
+index.ts
+tsconfig.json
+.prettierrc
+
+# github
+.github
+CONTRIBUTING.md
+renovate.json
+
+# Environment files
+.env*
+!.env.example
+
+# misc
+.commitlintrc.json
+.release-it.json
+.eslintignore
+.eslintrc.js

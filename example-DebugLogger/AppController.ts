@@ -16,6 +16,59 @@ export class AppController {
       correlationId: "12",
     });
 
+    this.logger.info(JSON.stringify("This is message re-processes with JSON.stringify()"));
+    this.logger.info(
+      `This is message re-processes with JSON.stringify(): ${JSON.stringify({
+        test: 123,
+        haha: "sdfsf",
+      })}`
+    );
+    this.logger.info(
+      `This is message embedded with object: ${{
+        test: 123,
+        haha: "sdfsf",
+      }}`
+    );
+
+    this.logger.info(`This is message with metadata.`, {
+      correlationId: "ssfafasfafasf",
+    });
+
+    this.logger.info({
+      test: "This is a message of object",
+    });
+
+    this.logger.info(
+      {
+        test: "This is a message of object and metadata",
+      },
+      {
+        correlationId: "sfsfsfsfsdf",
+      }
+    );
+
+    this.logger.info(
+      {
+        test: "This is a message of complex object and metadata",
+        adf: [
+          {
+            sdfsdf: 1212,
+            sfsf: {
+              sdfsf: 2324,
+            },
+          },
+          {
+            sdfsf: 2323,
+          },
+          323,
+          new Date(),
+        ],
+      },
+      {
+        correlationId: "sfsfsfsfsdf",
+      }
+    );
+
     return [];
   }
 

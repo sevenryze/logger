@@ -44,7 +44,13 @@ export class DebugLogger implements Logger {
   private winstonLogger: WinstonLogger;
 
   private static getFormatMessage(message: any): string {
-    return message;
+    let result: string;
+    try {
+      result = JSON.stringify(message);
+    } catch (error) {
+      result = `JSON.stringify() error: ${error}`;
+    }
+    return result;
   }
 
   private getFormatMetadata(metadata: LoggerMetadata = {}): object {

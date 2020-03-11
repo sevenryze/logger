@@ -62,7 +62,7 @@ export class AWSCloudWatchLogger implements Logger {
     this.localBackupDir = options.localBackup?.dir;
 
     this.winstonLogger = createLogger({
-      format: format.combine(format.timestamp(), format.ms(), format.json()),
+      format: format.combine(format.timestamp(), format.json()),
       level: options.level,
     });
 

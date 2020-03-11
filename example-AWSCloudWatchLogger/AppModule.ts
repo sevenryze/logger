@@ -8,9 +8,9 @@ import { LoggerModule } from "../lib";
     LoggerModule.forRoot({
       type: "AWS-CloudWatch",
       rootPath: __filename,
-      region: "us-west-1",
-      accessKeyId: "",
-      secretAccessKey: "",
+      region: process.env.AWS_region!,
+      accessKeyId: process.env.AWS_accessKeyId!,
+      secretAccessKey: process.env.AWS_secretAccessKey!,
       streamName: "local-stream",
       groupName: "local",
       level: "debug",

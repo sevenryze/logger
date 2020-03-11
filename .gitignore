@@ -36,3 +36,7 @@ polarr-api-log/
 .idea/
 
 random/
+
+# Environment files
+.env*
+!.env.example
