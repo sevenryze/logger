@@ -1,3 +1,11 @@
+<a name="0.1.4"></a>
+## [0.1.4](https://github.com/sevenryze/logger/compare/0.1.3...0.1.4) (2020-03-12)
+
+
+### Bug Fixes
+
+* Fix multiple logger instances bug. ([0b1ca03](https://github.com/sevenryze/logger/commit/0b1ca03))
+
 <a name="0.1.3"></a>
 ## [0.1.3](https://github.com/sevenryze/logger/compare/0.1.2...0.1.3) (2020-03-11)
 
