@@ -16,7 +16,7 @@ import { LoggerModule } from "../lib";
       level: "debug",
       printToConsole: true,
       localBackup: {
-        dir: `${__dirname}/backup`,
+        dir: `${__dirname}/../log`,
         isActive: true,
         retentionDays: 15,
       },

@@ -1,28 +1,37 @@
-import { DebugLogger, DebugLoggerOptions } from "./DebugLogger";
-import { Logger } from "../../Logger";
+import { DebugLogger } from "./DebugLogger";
+import { Logger, LoggerLevel } from "../../Logger";
 import { LoggerFactory, LoggerFactoryGenerateOptions } from "../../LoggerFactory";
 import { Inject, Injectable } from "@nestjs/common";
 import { LoggerModuleOptionsIoCAnchor } from "../../LoggerModuleOptions";
+import { createLogger, format, Logger as WinstonLogger, transports } from "winston";
 
-export interface DebugLoggerFactoryOptions extends Omit<DebugLoggerOptions, "filePath"> {}
+export interface DebugLoggerFactoryOptions {
+  rootPath: string;
+  level: LoggerLevel;
+}
 
 @Injectable()
 export class DebugLoggerFactory implements LoggerFactory {
   generate(options: LoggerFactoryGenerateOptions): Logger {
-    this.logger = new DebugLogger({
+    return new DebugLogger({
       filePath: options.issuerFilename,
-      ...this.options,
+      rootPath: this.rootPath,
+      winstonLogger: this.winstonLogger,
     });
-
-    return this.logger;
   }
 
   async cleanup(): Promise<void> {}
 
   constructor(@Inject(LoggerModuleOptionsIoCAnchor) private options: DebugLoggerFactoryOptions) {
     this.rootPath = options.rootPath;
+
+    this.winstonLogger = createLogger({
+      format: format.combine(format.colorize(), format.timestamp(), format.ms(), format.simple()),
+      level: options.level,
+      transports: [new transports.Console()],
+    });
   }
 
-  private logger?: DebugLogger;
   private readonly rootPath: string;
+  private readonly winstonLogger: WinstonLogger;
 }

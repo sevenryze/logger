@@ -1,12 +1,6 @@
 import path from "path";
-import { createLogger, format, Logger as WinstonLogger, transports } from "winston";
-import { Logger, LoggerLevel, LoggerMessage, LoggerMetadata } from "../../Logger";
-
-export interface DebugLoggerOptions {
-  filePath: string;
-  rootPath: string;
-  level: LoggerLevel;
-}
+import { Logger as WinstonLogger } from "winston";
+import { Logger, LoggerMessage, LoggerMetadata } from "../../Logger";
 
 export class DebugLogger implements Logger {
   public error(message: LoggerMessage, metadata?: LoggerMetadata): void {
@@ -25,23 +19,17 @@ export class DebugLogger implements Logger {
     this.winstonLogger.debug(DebugLogger.getFormatMessage(message), this.getFormatMetadata(metadata));
   }
 
-  constructor(options: DebugLoggerOptions) {
+  constructor(options: { filePath: string; rootPath: string; winstonLogger: WinstonLogger }) {
     this.rootPath = options.rootPath;
     this.filePath = options.filePath;
     this.fileRelativePath = path.relative(this.rootPath, this.filePath).replace(/\\/g, "/");
-
-    this.winstonLogger = createLogger({
-      format: format.combine(format.colorize(), format.timestamp(), format.ms(), format.simple()),
-      level: options.level,
-      transports: [new transports.Console()],
-    });
+    this.winstonLogger = options.winstonLogger;
   }
 
   private readonly rootPath: string;
   private readonly filePath: string;
   private readonly fileRelativePath: string;
-
-  private winstonLogger: WinstonLogger;
+  private readonly winstonLogger: WinstonLogger;
 
   private static getFormatMessage(message: any): string {
     let result: string;
