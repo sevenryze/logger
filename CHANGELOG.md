@@ -1,3 +1,6 @@
+<a name="0.1.5"></a>
+## [0.1.5](https://github.com/sevenryze/logger/compare/0.1.4...0.1.5) (2020-04-06)
+
 <a name="0.1.4"></a>
 ## [0.1.4](https://github.com/sevenryze/logger/compare/0.1.3...0.1.4) (2020-03-12)
 
