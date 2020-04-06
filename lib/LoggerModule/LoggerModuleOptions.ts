@@ -1,21 +1,18 @@
 import { AWSCloudWatchLoggerFactoryOptions } from "./Implementation/AWS-CloudWatch/AWSCloudWatchLoggerFactory";
 import { DebugLoggerFactoryOptions } from "./Implementation/Debug/DebugLoggerFactory";
 
-interface LoggerModuleOptionsForAWSCloudWatch extends AWSCloudWatchLoggerFactoryOptions {
+interface AWSCloudWatchOptions extends AWSCloudWatchLoggerFactoryOptions {
   type: "AWS-CloudWatch";
 }
 
-interface LoggerModuleOptionsForAliyunSLS {
+interface AliyunSLSOptions {
   type: "Aliyun-SLS";
 }
 
-interface LoggerModuleOptionsForDebug extends DebugLoggerFactoryOptions {
+interface DebugOptions extends DebugLoggerFactoryOptions {
   type: "Debug";
 }
 
-export type LoggerModuleOptions =
-  | LoggerModuleOptionsForAWSCloudWatch
-  | LoggerModuleOptionsForDebug
-  | LoggerModuleOptionsForAliyunSLS;
+export type LoggerModuleOptions = AWSCloudWatchOptions | DebugOptions | AliyunSLSOptions;
 
 export const LoggerModuleOptionsIoCAnchor = Symbol("LoggerModuleOptionsIoCAnchor");

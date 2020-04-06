@@ -1,14 +1,15 @@
-import { DynamicModule, Global, Inject, Module, OnApplicationShutdown, Provider } from "@nestjs/common";
+import { DynamicModule, Global, Module, Provider } from "@nestjs/common";
 import { LoggerModuleOptions, LoggerModuleOptionsIoCAnchor } from "./LoggerModuleOptions";
 import { DebugLoggerFactory } from "./Implementation/Debug/DebugLoggerFactory";
 import { AWSCloudWatchLoggerFactory } from "./Implementation/AWS-CloudWatch/AWSCloudWatchLoggerFactory";
-import { LoggerFactory, LoggerFactoryConstructor, LoggerFactoryIoCAnchor } from "./LoggerFactory";
+import { LoggerFactory, LoggerFactoryIoCAnchor } from "./LoggerFactory";
+import { ConstructorType } from "./Helper/ConstructorType";
 
 @Global()
 @Module({})
-export class LoggerModule implements OnApplicationShutdown {
+export class LoggerModule {
   static forRoot(options: LoggerModuleOptions): DynamicModule {
-    let implementationConstructor: LoggerFactoryConstructor;
+    let implementationConstructor: ConstructorType<LoggerFactory>;
     switch (options.type) {
       case "AWS-CloudWatch":
         implementationConstructor = AWSCloudWatchLoggerFactory;
@@ -40,9 +41,5 @@ export class LoggerModule implements OnApplicationShutdown {
     };
   }
 
-  async onApplicationShutdown(signal?: string): Promise<void> {
-    await this.loggerFactory.cleanup();
-  }
-
-  constructor(@Inject(LoggerFactoryIoCAnchor) private readonly loggerFactory: LoggerFactory) {}
+  constructor() {}
 }

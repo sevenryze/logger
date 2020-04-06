@@ -1,7 +1,7 @@
 import { AWSCloudWatchLogger } from "./AWSCloudWatchLogger";
 import { Logger, LoggerLevel } from "../../Logger";
 import { LoggerFactory, LoggerFactoryGenerateOptions } from "../../LoggerFactory";
-import { Inject, Injectable } from "@nestjs/common";
+import { Inject, Injectable, OnModuleDestroy } from "@nestjs/common";
 import { LoggerModuleOptionsIoCAnchor } from "../../LoggerModuleOptions";
 import { createLogger, format, Logger as WinstonLogger, transports } from "winston";
 import fsExtra from "fs-extra";
@@ -25,7 +25,7 @@ export interface AWSCloudWatchLoggerFactoryOptions {
 }
 
 @Injectable()
-export class AWSCloudWatchLoggerFactory implements LoggerFactory {
+export class AWSCloudWatchLoggerFactory implements LoggerFactory, OnModuleDestroy {
   generate(options: LoggerFactoryGenerateOptions): Logger {
     return new AWSCloudWatchLogger({
       filePath: options.issuerFilename,
@@ -34,8 +34,8 @@ export class AWSCloudWatchLoggerFactory implements LoggerFactory {
     });
   }
 
-  cleanup(): Promise<void> {
-    return this.flushAndExit() ?? Promise.resolve();
+  onModuleDestroy(): Promise<void> {
+    return this.flushAndExit();
   }
 
   constructor(@Inject(LoggerModuleOptionsIoCAnchor) private options: AWSCloudWatchLoggerFactoryOptions) {

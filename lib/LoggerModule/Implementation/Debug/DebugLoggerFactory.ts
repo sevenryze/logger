@@ -1,7 +1,7 @@
 import { DebugLogger } from "./DebugLogger";
 import { Logger, LoggerLevel } from "../../Logger";
 import { LoggerFactory, LoggerFactoryGenerateOptions } from "../../LoggerFactory";
-import { Inject, Injectable } from "@nestjs/common";
+import { Inject, Injectable, OnModuleDestroy } from "@nestjs/common";
 import { LoggerModuleOptionsIoCAnchor } from "../../LoggerModuleOptions";
 import { createLogger, format, Logger as WinstonLogger, transports } from "winston";
 
@@ -11,7 +11,7 @@ export interface DebugLoggerFactoryOptions {
 }
 
 @Injectable()
-export class DebugLoggerFactory implements LoggerFactory {
+export class DebugLoggerFactory implements LoggerFactory, OnModuleDestroy {
   generate(options: LoggerFactoryGenerateOptions): Logger {
     return new DebugLogger({
       filePath: options.issuerFilename,
@@ -20,7 +20,9 @@ export class DebugLoggerFactory implements LoggerFactory {
     });
   }
 
-  async cleanup(): Promise<void> {}
+  onModuleDestroy(): void {
+    console.log(`Debug logger factory disposed.`);
+  }
 
   constructor(@Inject(LoggerModuleOptionsIoCAnchor) private options: DebugLoggerFactoryOptions) {
     this.rootPath = options.rootPath;
