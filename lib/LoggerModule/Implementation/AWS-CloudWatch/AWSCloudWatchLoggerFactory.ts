@@ -58,6 +58,7 @@ export class AWSCloudWatchLoggerFactory implements LoggerFactory, OnModuleDestro
           filename: `${options.localBackup?.dir}/error-%DATE%.log`,
           level: "error",
           maxFiles: `${options.localBackup.retentionDays}d`,
+          zippedArchive: true,
         })
       );
 
@@ -66,6 +67,7 @@ export class AWSCloudWatchLoggerFactory implements LoggerFactory, OnModuleDestro
           datePattern: "YYYY-MM-DD",
           filename: `${options.localBackup?.dir}/combined-%DATE%.log`,
           maxFiles: `${options.localBackup.retentionDays}d`,
+          zippedArchive: true,
         })
       );
     }
