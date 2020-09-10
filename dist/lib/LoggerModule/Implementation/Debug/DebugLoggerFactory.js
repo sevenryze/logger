@@ -12,6 +12,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.DebugLoggerFactory = void 0;
 const DebugLogger_1 = require("./DebugLogger");
 const common_1 = require("@nestjs/common");
 const LoggerModuleOptions_1 = require("../../LoggerModuleOptions");

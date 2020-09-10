@@ -95,7 +95,7 @@ export class AWSCloudWatchLoggerFactory implements LoggerFactory, OnModuleDestro
   private readonly winstonLogger: WinstonLogger;
 
   private flushAndExit(): Promise<void> {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       const transport: any = this.winstonLogger.transports.find((t: any) => t.name === "CloudWatch");
 
       if (transport) {
