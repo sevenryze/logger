@@ -42,13 +42,11 @@ let AWSCloudWatchLoggerFactory = class AWSCloudWatchLoggerFactory {
                 filename: `${(_e = options.localBackup) === null || _e === void 0 ? void 0 : _e.dir}/error-%DATE%.log`,
                 level: "error",
                 maxFiles: `${options.localBackup.retentionDays}d`,
-                zippedArchive: true,
             }));
             this.winstonLogger.add(new winston_daily_rotate_file_1.default({
                 datePattern: "YYYY-MM-DD",
                 filename: `${(_f = options.localBackup) === null || _f === void 0 ? void 0 : _f.dir}/combined-%DATE%.log`,
                 maxFiles: `${options.localBackup.retentionDays}d`,
-                zippedArchive: true,
             }));
         }
         if (options.printToConsole) {
@@ -77,7 +75,7 @@ let AWSCloudWatchLoggerFactory = class AWSCloudWatchLoggerFactory {
         return this.flushAndExit();
     }
     flushAndExit() {
-        return new Promise(resolve => {
+        return new Promise((resolve) => {
             const transport = this.winstonLogger.transports.find((t) => t.name === "CloudWatch");
             if (transport) {
                 transport.kthxbye(() => {
