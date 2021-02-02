@@ -1,5 +1,5 @@
 {
-  "name": "@polarrco/logger",
+  "name": "@Polarrco/logger",
   "version": "0.1.7",
   "private": false,
   "main": "index.js",
@@ -33,6 +33,9 @@
       "eslint --fix --quiet",
       "prettier --write"
     ]
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   },
   "towerflow": {
     "type": "node-lib"
