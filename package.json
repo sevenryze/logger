@@ -1,6 +1,6 @@
 {
-  "name": "@Polarrco/logger",
-  "version": "0.1.8",
+  "name": "@polarrco/logger",
+  "version": "0.1.9",
   "private": false,
   "main": "index.js",
   "files": [
