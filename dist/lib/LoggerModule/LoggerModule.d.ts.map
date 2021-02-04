@@ -1,1 +1,0 @@
-{"version":3,"file":"LoggerModule.d.ts","sourceRoot":"","sources":["../../../lib/LoggerModule/LoggerModule.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,aAAa,EAA4B,MAAM,gBAAgB,CAAC;AACzE,OAAO,EAAE,mBAAmB,EAAgC,MAAM,uBAAuB,CAAC;AAM1F,qBAEa,YAAY;IACvB,MAAM,CAAC,OAAO,CAAC,OAAO,EAAE,mBAAmB,GAAG,aAAa;IAiC3D,MAAM,CAAC,YAAY,CAAC,OAAO,EAAE,OAAO,CAAC,mBAAmB,CAAC,GAAG,aAAa;;CAsC1E"}
