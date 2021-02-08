@@ -41,7 +41,7 @@ export class DebugLogger implements Logger {
     return result;
   }
 
-  private getFormatMetadata(metadata: LoggerMetadata = {}): object {
+  private getFormatMetadata(metadata: LoggerMetadata = {}): Record<string, any> {
     return {
       ...metadata,
       loggingFilePath: this.fileRelativePath,

@@ -35,7 +35,7 @@ export class AWSCloudWatchLogger implements Logger {
     return message;
   }
 
-  private formatMetadata(metadata: LoggerMetadata = {}): object {
+  private formatMetadata(metadata: LoggerMetadata = {}): Record<string, any> {
     return {
       ...metadata,
       loggingFilePath: this.fileRelativePath,

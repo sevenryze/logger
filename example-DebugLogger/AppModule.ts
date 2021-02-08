@@ -3,7 +3,7 @@ import { AppController } from "./AppController";
 import { LoggerModule, LoggerModuleOptions } from "../lib";
 
 async function asyncOptions(): Promise<LoggerModuleOptions> {
-  await new Promise((resolve) => {
+  await new Promise<void>((resolve) => {
     setTimeout(function () {
       resolve();
     }, 1);

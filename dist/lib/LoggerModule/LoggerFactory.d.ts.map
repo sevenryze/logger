@@ -1,1 +1,0 @@
-{"version":3,"file":"LoggerFactory.d.ts","sourceRoot":"","sources":["../../../lib/LoggerModule/LoggerFactory.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,MAAM,EAAE,MAAM,UAAU,CAAC;AAElC,MAAM,WAAW,4BAA4B;IAC3C,cAAc,EAAE,MAAM,CAAC;CACxB;AAED,MAAM,WAAW,aAAa;IAC5B,QAAQ,CAAC,OAAO,EAAE,4BAA4B,GAAG,MAAM,CAAC;CACzD;AAED,eAAO,MAAM,sBAAsB,eAAmC,CAAC"}

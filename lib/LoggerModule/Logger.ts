@@ -1,4 +1,4 @@
-export type LoggerMetadata = object;
+export type LoggerMetadata = Record<string, any>;
 export type LoggerMessage = any;
 
 export type LoggerLevel = "error" | "warn" | "info" | "debug";
