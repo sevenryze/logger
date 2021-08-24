@@ -85,6 +85,7 @@ export class AWSCloudWatchLoggerFactory implements LoggerFactory, OnModuleDestro
         awsSecretKey: options.secretAccessKey,
         awsRegion: options.region,
         jsonMessage: true,
+        name: options.groupName,
       })
     );
   }
