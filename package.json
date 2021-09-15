@@ -1,6 +1,6 @@
 {
   "name": "@sevenryze/logger",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "private": false,
   "main": "index.js",
   "files": [
