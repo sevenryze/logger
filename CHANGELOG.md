@@ -1,3 +1,6 @@
+<a name="0.1.7"></a>
+## [0.1.7](https://github.com/sevenryze/logger/compare/0.1.6...0.1.7) (2021-10-25)
+
 <a name="0.1.6"></a>
 ## [0.1.6](https://github.com/sevenryze/logger/compare/0.1.5...0.1.6) (2021-09-15)
 
